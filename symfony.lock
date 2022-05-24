@@ -347,6 +347,9 @@
     "symfony/polyfill-uuid": {
         "version": "v1.25.0"
     },
+    "symfony/process": {
+        "version": "v6.0.8"
+    },
     "symfony/property-access": {
         "version": "v6.0.8"
     },
@@ -358,6 +361,9 @@
     },
     "symfony/rate-limiter": {
         "version": "v6.0.8"
+    },
+    "symfony/redis-messenger": {
+        "version": "v6.0.7"
     },
     "symfony/routing": {
         "version": "6.0",
