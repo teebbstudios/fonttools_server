@@ -20,7 +20,14 @@ final class FontMinMessageHandler implements MessageHandlerInterface
     {
         $projectDir = $this->parameterBag->get('kernel.project_dir');
 
-        $fontFamilyPath = $projectDir . '/assets/fonts/' . $message->getFontFamily(). '.ttf';
+        $fonts = $this->parameterBag->get('fonts');
+
+        $fontFamily = $message->getFontFamily();
+        if (!key_exists($fontFamily, $fonts)) {
+            return;
+        }
+
+        $fontFamilyPath = $projectDir . '/assets/fonts/' . $fonts[$fontFamily];
         $newFontFamilyPath = $projectDir . '/public/assets/fontmin/' . $message->getNewFontFamily() . '.ttf';
 
         $textOption = '--text=' . $message->getText();
@@ -31,8 +38,6 @@ final class FontMinMessageHandler implements MessageHandlerInterface
         $process->run(function ($type, $buffer) {
             if (Process::ERR === $type) {
                 echo 'ERR > ' . $buffer;
-            } else {
-                echo 'OUT > ' . $buffer;
             }
         });
     }
