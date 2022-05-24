@@ -1,0 +1,13 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content_title %}
+    {%- apply spaceless -%}
+        编辑个人信息
+    {%- endapply -%}
+{% endblock %}
+
+{% block main %}
+    {{ form(form) }}
+{% endblock %}
+
+

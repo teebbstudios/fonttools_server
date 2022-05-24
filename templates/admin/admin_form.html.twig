@@ -1,0 +1,22 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{# @var entity \EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto #}
+{% extends ea.templatePath('layout') %}
+
+{% trans_default_domain ea.i18n.translationDomain %}
+
+{% block body_id 'ea-detail-' ~ entity.name ~ '-' ~ entity.primaryKeyValue %}
+{% block body_class 'ea-detail ea-detail-' ~ entity.name %}
+
+{% block content_title %}
+    {%- apply spaceless -%}
+        {% set default_title = ea.crud.defaultPageTitle('detail', entity.instance)|trans(ea.i18n.translationParameters, 'EasyAdminBundle') %}
+        {% set custom_title = ea.crud.customPageTitle('detail', entity.instance) %}
+        {{ custom_title is null ? default_title|raw : custom_title|trans(ea.i18n.translationParameters)|raw }}
+    {%- endapply -%}
+{% endblock %}
+
+{% block content_footer_wrapper '' %}
+
+{% block main %}
+    {{ form(admin_form) }}
+{% endblock %}
