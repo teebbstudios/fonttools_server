@@ -33,12 +33,13 @@ final class FontMinMessageHandler implements MessageHandlerInterface
         $textOption = '--text=' . $message->getText();
         $outputFileOption = '--output-file=' . $newFontFamilyPath;
 
-        $process = new Process(['pyftsubset', $fontFamilyPath, $textOption, $outputFileOption]);
+        $process = new Process(['pyftsubset', $fontFamilyPath, $textOption, $outputFileOption, '--passthrough-tables']);
 
         $process->run(function ($type, $buffer) {
             if (Process::ERR === $type) {
                 echo 'ERR > ' . $buffer;
             }
         });
+
     }
 }
