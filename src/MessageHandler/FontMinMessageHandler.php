@@ -42,5 +42,9 @@ final class FontMinMessageHandler implements MessageHandlerInterface
 //            }
         });
 
+        // executes after the command finishes
+        if ($process->isSuccessful()) {
+            chmod($newFontFamilyPath, 0755);
+        }
     }
 }
